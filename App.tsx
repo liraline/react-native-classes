@@ -1,12 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
+  const [buttonCounter, setButtonCounter] = React.useState(0);
+
+  const handleClick = () => {
+    setButtonCounter(buttonCounter + 1);
+  }
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Button
+        color="purple"
+        onPress={handleClick}
+        title={buttonCounter % 2 == 0 ? "par" : "impar" }
+        />
+      <Text>Times clicked: {buttonCounter}</Text>
     </View>
   );
 }
